@@ -7,7 +7,7 @@ class StatsGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.25,
-      color: Colors.yellow,
+      // color: Colors.yellow,
       child: Column(
         children: <Widget>[
           Flexible(

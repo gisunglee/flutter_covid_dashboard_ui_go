@@ -1,5 +1,7 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_covid_dashboard_ui_go/data/data.dart';
+import 'package:flutter_covid_dashboard_ui_go/wedgets/covid_bar_chart.dart';
 import 'package:flutter_covid_dashboard_ui_go/wedgets/stats_grid.dart';
 
 import '../config/palette.dart';
@@ -19,21 +21,25 @@ class _StatsScreenState extends State<StatsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Palette.primaryColor,
-      appBar: CustomAppBar(
-      ),
+      appBar: CustomAppBar(),
       body: CustomScrollView(
         // physics: ClampingScrollPhysics(),
         slivers: <Widget>[
           _buildHeader(),
           _buildRegionTabBar(),
           _bulidStatsTabBar(),
-          SliverPadding(padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          sliver: SliverToBoxAdapter(
-            child: StatsGrid(
-
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: StatsGrid(),
+               // child: CovidBarChart(covidCases: covidUSADailyNewCases),
             ),
-          ),),
-
+          ), SliverPadding(
+            padding: const EdgeInsets.only(top: 20.0),
+            sliver: SliverToBoxAdapter(
+               child: CovidBarChart(covidCases: covidUSADailyNewCases),
+            ),
+          ),
         ],
       ),
     );
@@ -41,7 +47,6 @@ class _StatsScreenState extends State<StatsScreen> {
 
   SliverPadding _buildHeader() {
     return SliverPadding(
-
       padding: const EdgeInsets.all(20.0),
       sliver: SliverToBoxAdapter(
         child: Text(
@@ -80,7 +85,7 @@ class _StatsScreenState extends State<StatsScreen> {
               Text('My Country'),
               Text('Clobal'),
             ],
-            onTap: (index){},
+            onTap: (index) {},
           ),
         ),
       ),
@@ -105,7 +110,6 @@ class _StatsScreenState extends State<StatsScreen> {
             ],
             onTap: (index) {},
           ),
-
         ),
       ),
     );
